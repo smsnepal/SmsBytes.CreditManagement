@@ -29,6 +29,8 @@ namespace SmsBytes.CreditManagement.Api.GraphQL.Extensions
             services.AddTransient<EnumerationGraphType<Storage.TransactionType>, TransactionTypeEnum>();
             services.AddTransient<TransactionType>();
             services.AddTransient<TopupInputType>();
+            services.AddTransient<UserType>();
+            services.AddTransient<DeductionInputType>();
             services.AddTransient<Query>();
             services.AddTransient<Mutation>();
             services.AddScoped<AuthorizeDirectiveVisitor>();

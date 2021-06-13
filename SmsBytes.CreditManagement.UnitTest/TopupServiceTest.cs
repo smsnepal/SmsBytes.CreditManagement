@@ -16,8 +16,8 @@ namespace SmsBytes.CreditManagement.UnitTest
         public async Task TestTopupCreditsUserCashAndDebitsUserSms()
         {
             var uuidService = new UuidService();
-            var mockRepo = new Mock<ITopupRepository>();
-            mockRepo.Setup(x => x.Topup(It.IsAny<IEnumerable<Transaction>>())).Returns<IEnumerable<Transaction>>(Task.FromResult);
+            var mockRepo = new Mock<ITransactionRepository>();
+            mockRepo.Setup(x => x.AddEntries(It.IsAny<IEnumerable<Transaction>>())).Returns<IEnumerable<Transaction>>(Task.FromResult);
             var service = new TopupService(uuidService, mockRepo.Object);
             var result = await service.Topup(new TopupRequest
             {
@@ -39,8 +39,8 @@ namespace SmsBytes.CreditManagement.UnitTest
         public async Task TestTopup()
         {
             var uuidService = new UuidService();
-            var mockRepo = new Mock<ITopupRepository>();
-            mockRepo.Setup(x => x.Topup(It.IsAny<IEnumerable<Transaction>>())).Returns<IEnumerable<Transaction>>(Task.FromResult);
+            var mockRepo = new Mock<ITransactionRepository>();
+            mockRepo.Setup(x => x.AddEntries(It.IsAny<IEnumerable<Transaction>>())).Returns<IEnumerable<Transaction>>(Task.FromResult);
             var service = new TopupService(uuidService, mockRepo.Object);
             var result = await service.Topup(new TopupRequest
             {
