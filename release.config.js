@@ -1,5 +1,3 @@
-const serviceName = 'starter'
-
 class SemanticReleaseError extends Error {
     constructor(message, code, details) {
         super(message);
@@ -42,25 +40,25 @@ module.exports = {
         },
         {
             path: "@semantic-release/exec",
-            cmd: `docker pull fossapps/micro.${serviceName}:\`git rev-parse --short=4 ${process.env.GITHUB_SHA}\``
+            cmd: `docker pull smsbytes/creditmanagement:\`git rev-parse --short=4 ${process.env.GITHUB_SHA}\``
         },
         {
             path: "@semantic-release/exec",
-            cmd: `docker tag fossapps/micro.${serviceName}:\`git rev-parse --short=4 ${process.env.GITHUB_SHA}\` fossapps/micro.${serviceName}:\${nextRelease.version}`
+            cmd: `docker tag smsbytes/creditmanagement:\`git rev-parse --short=4 ${process.env.GITHUB_SHA}\` smsbytes/creditmanagement:\${nextRelease.version}`
         },
         {
             path: "@semantic-release/exec",
-            cmd: `docker tag fossapps/micro.${serviceName}:\`git rev-parse --short=4 ${process.env.GITHUB_SHA}\` fossapps/micro.${serviceName}:latest`
+            cmd: `docker tag smsbytes/creditmanagement:\`git rev-parse --short=4 ${process.env.GITHUB_SHA}\` smsbytes/creditmanagement:latest`
         }
     ],
     publish: [
         {
             path: "@semantic-release/exec",
-            cmd: `docker push fossapps/micro.${serviceName}:\${nextRelease.version}`
+            cmd: `docker push smsbytes/creditmanagement:\${nextRelease.version}`
         },
         {
             path: "@semantic-release/exec",
-            cmd: `docker push fossapps/micro.${serviceName}:latest`
+            cmd: `docker push smsbytes/creditmanagement:latest`
         },
         "@semantic-release/github"
     ]

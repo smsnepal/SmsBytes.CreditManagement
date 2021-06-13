@@ -2,9 +2,6 @@ name: Build
 
 on: [push]
 
-env:
-  SERVICE_NAME: micro.starter
-  SERVICE_NAME_CAPITALIZED: Micro.Starter
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -44,9 +41,10 @@ jobs:
         run: |
           TAG=`git rev-parse --short=4 ${GITHUB_SHA}`
           echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login --username "${{ secrets.DOCKERHUB_LOGIN }}" --password-stdin
-          docker build . -t fossapps/$SERVICE_NAME --build-arg VERSION=$TAG
-          docker tag fossapps/$SERVICE_NAME fossapps/$SERVICE_NAME:$TAG
-          docker push fossapps/$SERVICE_NAME:$TAG
+          docker build . -t smsbytes/creditmanagement --build-arg VERSION=$TAG
+          docker tag smsbytes/creditmanagement smsbytes/creditmanagement:$TAG
+          docker push smsbytes/creditmanagement:$TAG
+
   run-postman-tests:
     needs: build-docker-image
     runs-on: ubuntu-latest
@@ -60,14 +58,14 @@ jobs:
       - name: 'Load Docker Image'
         run: |
           TAG=`git rev-parse --short=4 ${GITHUB_SHA}`
-          docker pull fossapps/$SERVICE_NAME:$TAG
+          docker pull smsbytes/creditmanagement:$TAG
       - name: Spin-up Containers
         run: |
           TAG=`git rev-parse --short=4 ${GITHUB_SHA}`
           TAG=$TAG docker-compose -f ./docker-compose.ci.yml up -d
       - name: Run Postman Tests
         run: |
-          cd ./${SERVICE_NAME_CAPITALIZED}.UnitTest/ExternalTests
+          cd ./SmsBytes.CreditManagement.UnitTest/ExternalTests
           sh ./postman_tests.sh
 
   publish:
