@@ -45,31 +45,8 @@ jobs:
           docker tag smsbytes/creditmanagement smsbytes/creditmanagement:$TAG
           docker push smsbytes/creditmanagement:$TAG
 
-  run-postman-tests:
-    needs: build-docker-image
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Pull Docker Image
-        uses: actions/checkout@v1
-        with:
-          name: docker-pull
-
-      - name: 'Load Docker Image'
-        run: |
-          TAG=`git rev-parse --short=4 ${GITHUB_SHA}`
-          docker pull smsbytes/creditmanagement:$TAG
-      - name: Spin-up Containers
-        run: |
-          TAG=`git rev-parse --short=4 ${GITHUB_SHA}`
-          TAG=$TAG docker-compose -f ./docker-compose.ci.yml up -d
-      - name: Run Postman Tests
-        run: |
-          cd ./SmsBytes.CreditManagement.UnitTest/ExternalTests
-          sh ./postman_tests.sh
-
   publish:
-    needs: [ build-docker-image, run-postman-tests ]
+    needs: [ build-docker-image ]
     runs-on: ubuntu-latest
 
     steps:
