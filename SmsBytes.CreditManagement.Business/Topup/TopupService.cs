@@ -14,12 +14,12 @@ namespace SmsBytes.CreditManagement.Business.Topup
     public class TopupService : ITopupService
     {
         private readonly IUuidService _uuid;
-        private readonly ITopupRepository _topupRepository;
+        private readonly ITransactionRepository _transactionRepository;
 
-        public TopupService(IUuidService uuid, ITopupRepository topupRepository)
+        public TopupService(IUuidService uuid, ITransactionRepository transactionRepository)
         {
             _uuid = uuid;
-            _topupRepository = topupRepository;
+            _transactionRepository = transactionRepository;
         }
 
         public async Task<Transaction> Topup(TopupRequest input, string admin)
@@ -30,7 +30,7 @@ namespace SmsBytes.CreditManagement.Business.Topup
             entries = entries.Concat(Transaction.TransferCash("system", "exchange", txRef, input.Amount, _uuid));
             entries = entries.Concat(Transaction.TransferSms("exchange", "system", txRef, input.Count, _uuid));
             entries = entries.Concat(Transaction.TransferSms("system", input.User, txRef, input.Count, _uuid));
-            var results = await _topupRepository.Topup(entries);
+            var results = await _transactionRepository.AddEntries(entries);
             return results.FirstOrDefault(x => x.User == input.User && x.AccountType == AccountType.Sms);
         }
     }

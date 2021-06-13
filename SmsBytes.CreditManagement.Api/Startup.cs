@@ -26,7 +26,7 @@ namespace SmsBytes.CreditManagement.Api
         {
             services.AddConfiguration(Configuration);
             services.AddMetrics();
-            services.ConfigureRequiredDependencies(Configuration);
+            services.ConfigureRequiredDependencies();
             services.ConfigureHealthChecks();
             services.AddControllers();
             services.ConfigureSwagger();
