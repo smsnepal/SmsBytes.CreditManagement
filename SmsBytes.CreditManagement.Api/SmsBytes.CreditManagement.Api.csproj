@@ -33,6 +33,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\SmsBytes.CreditManagement.Business\SmsBytes.CreditManagement.Business.csproj" />
       <ProjectReference Include="..\SmsBytes.CreditManagement.Storage\SmsBytes.CreditManagement.Storage.csproj" />
     </ItemGroup>
 

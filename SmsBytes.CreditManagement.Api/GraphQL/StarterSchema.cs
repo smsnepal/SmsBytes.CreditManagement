@@ -7,9 +7,10 @@ namespace SmsBytes.CreditManagement.Api.GraphQL
 {
     public class StarterSchema : Schema<EntityType>
     {
-        public StarterSchema(IServiceProvider services, Query query) : base(services)
+        public StarterSchema(IServiceProvider services, Query query, Mutation mutation) : base(services)
         {
             Query = query;
+            Mutation = mutation;
             Directives.Register(new AuthorizeDirective());
             RegisterVisitor(typeof(AuthorizeDirectiveVisitor));
         }

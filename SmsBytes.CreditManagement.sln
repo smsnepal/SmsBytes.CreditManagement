@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmsBytes.CreditManagement.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmsBytes.CreditManagement.Common", "SmsBytes.CreditManagement.Common\SmsBytes.CreditManagement.Common.csproj", "{21EB1C0F-3AF3-475C-8667-1BF3B351DABA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmsBytes.CreditManagement.Business", "SmsBytes.CreditManagement.Business\SmsBytes.CreditManagement.Business.csproj", "{CBA6F4D6-60C2-4838-ACB2-23951D7E932F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{21EB1C0F-3AF3-475C-8667-1BF3B351DABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21EB1C0F-3AF3-475C-8667-1BF3B351DABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21EB1C0F-3AF3-475C-8667-1BF3B351DABA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBA6F4D6-60C2-4838-ACB2-23951D7E932F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBA6F4D6-60C2-4838-ACB2-23951D7E932F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBA6F4D6-60C2-4838-ACB2-23951D7E932F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBA6F4D6-60C2-4838-ACB2-23951D7E932F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

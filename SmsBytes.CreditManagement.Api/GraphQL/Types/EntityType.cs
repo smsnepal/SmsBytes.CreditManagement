@@ -4,7 +4,7 @@ namespace SmsBytes.CreditManagement.Api.GraphQL.Types
     {
         public EntityType()
         {
-            Type<WeatherType>();
+            Type<TransactionType>();
         }
     }
 }

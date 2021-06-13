@@ -36,6 +36,7 @@ namespace SmsBytes.CreditManagement.Api
             host.Run();
         }
 
+        // ReSharper disable once MemberCanBePrivate.Global
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
