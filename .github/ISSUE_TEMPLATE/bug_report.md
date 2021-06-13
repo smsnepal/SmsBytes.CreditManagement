@@ -11,7 +11,7 @@ assignees: ''
 A clear and concise description of what the bug is.
 
 ### Steps to reproduce the behavior:
-1. docker run -it --rm fossapps/starter.net:latest
+1. docker run -it --rm 
 2. `curl ...`
 
 ### Expected Response

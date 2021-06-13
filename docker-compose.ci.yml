@@ -1,7 +1,7 @@
 version: '3'
 services:
   api:
-    image: fossapps/micro.starter
+    image: smsbytes/creditmanagement
     ports:
       - 5000:5000
     environment:
