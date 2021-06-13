@@ -32,6 +32,7 @@ namespace SmsBytes.CreditManagement.Api.GraphQL.Extensions
             services.AddTransient<Query>();
             services.AddTransient<Mutation>();
             services.AddScoped<AuthorizeDirectiveVisitor>();
+            services.AddScoped<RequirePermissionDirectiveVisitor>();
             services
                 .AddGraphQL(options =>
                 {

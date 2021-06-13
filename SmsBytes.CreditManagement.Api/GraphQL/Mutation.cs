@@ -14,7 +14,8 @@ namespace SmsBytes.CreditManagement.Api.GraphQL
         {
             FieldAsync<TransactionType, Transaction>("topup",
                 arguments: new QueryArguments(TopupInputType.BuildArgument("input")), resolve:
-                x => topupService.Topup(x.TopupRequest("input"), contextAccessor.GetUserId())).Authorize();
+                x => topupService.Topup(x.TopupRequest("input"), contextAccessor.GetUserId()))
+                .RequirePermission("topup.create");
         }
     }
 }
