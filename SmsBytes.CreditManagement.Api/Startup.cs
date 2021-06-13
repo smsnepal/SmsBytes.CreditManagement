@@ -26,7 +26,7 @@ namespace SmsBytes.CreditManagement.Api
         {
             services.AddConfiguration(Configuration);
             services.AddMetrics();
-            services.ConfigureRequiredDependencies();
+            services.ConfigureRequiredDependencies(Configuration);
             services.ConfigureHealthChecks();
             services.AddControllers();
             services.ConfigureSwagger();
@@ -34,7 +34,9 @@ namespace SmsBytes.CreditManagement.Api
             services.ConfigureGraphql();
             services.ConfigureAuthServices(new Config
             {
-                KeyStoreUrl = Configuration.GetSection("Services").Get<Services>().KeyStore.Url
+                KeyStoreUrl = Configuration.GetSection("Services").Get<Services>().KeyStore.Url,
+                ValidIssuer = "my_app_auth",
+                ValidAudiences = new []{"my_app"}
             });
         }
 
@@ -46,9 +48,9 @@ namespace SmsBytes.CreditManagement.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.SetupAuth();
             app.SetupGraphQl();
             app.UseRouting();
-            app.SetupAuth();
             app.AddSwaggerWithUi();
             app.UseEndpoints(endpoints =>
             {

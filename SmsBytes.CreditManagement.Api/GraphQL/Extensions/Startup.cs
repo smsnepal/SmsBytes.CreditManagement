@@ -10,6 +10,7 @@ using Micro.GraphQL.Federation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using SmsBytes.CreditManagement.Api.GraphQL.Directives;
+using SmsBytes.CreditManagement.Api.GraphQL.Inputs;
 using SmsBytes.CreditManagement.Api.GraphQL.Types;
 
 namespace SmsBytes.CreditManagement.Api.GraphQL.Extensions
@@ -24,9 +25,14 @@ namespace SmsBytes.CreditManagement.Api.GraphQL.Extensions
             services.AddSingleton<IDataLoaderContextAccessor, DataLoaderContextAccessor>();
             services.AddSingleton<IDocumentExecutionListener, DataLoaderDocumentListener>();
             services.AddTransient<ISchema, StarterSchema>();
+            services.AddTransient<EnumerationGraphType<Storage.AccountType>, AccountTypeEnum>();
+            services.AddTransient<EnumerationGraphType<Storage.TransactionType>, TransactionTypeEnum>();
+            services.AddTransient<TransactionType>();
+            services.AddTransient<TopupInputType>();
             services.AddTransient<Query>();
-            services.AddTransient<WeatherType>();
+            services.AddTransient<Mutation>();
             services.AddScoped<AuthorizeDirectiveVisitor>();
+            services.AddScoped<RequirePermissionDirectiveVisitor>();
             services
                 .AddGraphQL(options =>
                 {

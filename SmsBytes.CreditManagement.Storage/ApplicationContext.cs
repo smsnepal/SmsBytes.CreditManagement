@@ -7,7 +7,7 @@ namespace SmsBytes.CreditManagement.Storage
     public class ApplicationContext : DbContext
     {
         private readonly DatabaseConfig _db;
-        public DbSet<Weather> Weathers { set; get; }
+        public DbSet<Transaction> Transactions { set; get; }
 
         public ApplicationContext(DbContextOptions options, IOptions<DatabaseConfig> dbOption) : base(options)
         {

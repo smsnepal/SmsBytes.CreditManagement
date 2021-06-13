@@ -9,9 +9,15 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Moq" Version="4.16.1" />
         <PackageReference Include="nunit" Version="3.13.2" />
         <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SmsBytes.CreditManagement.Business\SmsBytes.CreditManagement.Business.csproj" />
+      <ProjectReference Include="..\SmsBytes.CreditManagement.Common\SmsBytes.CreditManagement.Common.csproj" />
     </ItemGroup>
 
 </Project>

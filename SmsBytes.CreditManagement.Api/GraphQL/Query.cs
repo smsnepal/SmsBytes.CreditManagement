@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+using System;
 using Micro.GraphQL.Federation;
 using SmsBytes.CreditManagement.Api.GraphQL.Types;
 using SmsBytes.CreditManagement.Storage;
@@ -9,13 +9,16 @@ namespace SmsBytes.CreditManagement.Api.GraphQL
     {
         public Query()
         {
-            Field<WeatherType, Weather>()
-                .Name("weather")
-                .ResolveAsync(x => Task.FromResult(new Weather
-                {
-                    Id = "id",
-                    Temperature = 23.3
-                }));
+            Field<Types.TransactionType, Transaction>().Name("transaction").Resolve(x => new Transaction
+            {
+                Amount = 100,
+                Id = "123",
+                Ref = "ref",
+                User = "asdf",
+                CreatedAt = DateTime.Now,
+                AccountType = AccountType.Cash,
+                TransactionType = Storage.TransactionType.Credit,
+            });
         }
     }
 }
