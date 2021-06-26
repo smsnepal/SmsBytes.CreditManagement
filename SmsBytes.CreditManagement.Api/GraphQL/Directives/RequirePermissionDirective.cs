@@ -10,7 +10,7 @@ namespace SmsBytes.CreditManagement.Api.GraphQL.Directives
     public class RequirePermissionDirective : DirectiveGraphType
     {
         public const string DirectiveName = "requirePermission";
-        public override bool? Introspectable => false;
+        public override bool? Introspectable => true;
 
         public RequirePermissionDirective() : base(
             DirectiveName,
