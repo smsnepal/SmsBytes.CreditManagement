@@ -10,7 +10,7 @@ namespace SmsBytes.CreditManagement.Api.GraphQL.Directives
     public class AuthorizeDirective : DirectiveGraphType
     {
         public const string DirectiveName = "authorize";
-        public override bool? Introspectable => true;
+        public override bool? Introspectable => false;
 
         public AuthorizeDirective() : base(
             DirectiveName,
