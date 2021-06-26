@@ -5,6 +5,7 @@ namespace SmsBytes.CreditManagement.Api.GraphQL.Types
         public EntityType()
         {
             Type<TransactionType>();
+            Type<UserType>();
         }
     }
 }
